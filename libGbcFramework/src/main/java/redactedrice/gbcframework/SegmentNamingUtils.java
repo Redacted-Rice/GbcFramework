@@ -18,6 +18,13 @@ public final class SegmentNamingUtils {
         return line.startsWith(SUBSEGMENT_STARTLINE);
     }
 
+    public static String requireFullyQualifiedLabel(String label, String context) {
+        if (label == null || label.isEmpty() || isOnlySubsegmentPartOfLabel(label)) {
+            throw new IllegalArgumentException(context + " label must be fully qualified: " + label);
+        }
+        return label;
+    }
+
     public static boolean containsPlaceholder(String line) {
         return line.contains(PLACEHOLDER_MARKER);
     }
