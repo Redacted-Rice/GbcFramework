@@ -19,7 +19,7 @@ public final class SegmentNamingUtils {
     }
 
     public static String requireFullyQualifiedLabel(String label, String context) {
-        if (label == null || label.isEmpty() || isOnlySubsegmentPartOfLabel(label)) {
+        if (label == null || label.isBlank() || isOnlySubsegmentPartOfLabel(label)) {
             throw new IllegalArgumentException(context + " label must be fully qualified: " + label);
         }
         return label;
